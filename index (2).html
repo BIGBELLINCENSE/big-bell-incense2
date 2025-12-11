@@ -3,178 +3,1135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Big Bell Incense - Premium Incense from Bangalore</title>
+    <title>Big Bell Incense - Premium Incense</title>
     <style>
         :root {
             --color-primary: #c4a747;
             --color-dark: #2a1810;
+            --color-accent: #8b4513;
             --color-light: #f5f0e8;
         }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            font-family: Georgia, serif;
+            font-family: 'Georgia', serif;
             background: linear-gradient(135deg, #1a0f08 0%, #2a1810 50%, #1a0f08 100%);
             color: var(--color-light);
             min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .poster-container {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(196, 167, 71, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 69, 19, 0.05) 0%, transparent 50%);
         }
-        .container {
+
+        .poster {
             background: linear-gradient(to bottom, rgba(26, 15, 8, 0.9), rgba(42, 24, 16, 0.95));
-            border: 2px solid var(--color-primary);
             border-radius: 12px;
             padding: 40px 30px;
             max-width: 500px;
             width: 100%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(196, 167, 71, 0.2);
-            text-align: center;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(196, 167, 71, 0.2);
+            border: 2px solid rgba(196, 167, 71, 0.3);
+            animation: slideIn 0.8s ease-out;
         }
-        h1 {
-            font-size: 3em;
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .brand-name {
+            font-size: 3.5em;
+            font-weight: bold;
             color: var(--color-primary);
-            margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             letter-spacing: 2px;
+            margin-bottom: 10px;
+            animation: fadeInDown 0.8s ease-out;
         }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .subtitle {
             font-size: 0.9em;
             color: var(--color-primary);
             letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
+
         .divider {
             height: 1px;
             background: linear-gradient(to right, transparent, var(--color-primary), transparent);
             margin: 20px 0;
         }
+
         .tagline {
             font-size: 1.3em;
             color: var(--color-light);
             font-style: italic;
+            text-align: center;
             margin: 25px 0;
             line-height: 1.6;
+            animation: fadeIn 1s ease-out 0.3s backwards;
         }
-        .emoji {
-            font-size: 2.5em;
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .incense-visual {
+            text-align: center;
             margin: 30px 0;
+            font-size: 2.5em;
+            animation: float 3s ease-in-out infinite;
         }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
         .features {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             margin: 30px 0;
+            animation: fadeIn 1s ease-out 0.6s backwards;
         }
+
         .feature {
+            text-align: center;
             padding: 15px;
+            border-radius: 8px;
             background: rgba(196, 167, 71, 0.08);
             border: 1px solid rgba(196, 167, 71, 0.2);
-            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
+
         .feature:hover {
             background: rgba(196, 167, 71, 0.15);
             border-color: rgba(196, 167, 71, 0.4);
             transform: translateY(-5px);
         }
+
         .feature-icon {
             font-size: 1.5em;
             margin-bottom: 8px;
         }
+
         .feature-text {
             font-size: 0.8em;
             color: var(--color-light);
         }
-        .btn {
+
+        .cta-section {
+            margin: 30px 0;
+            animation: fadeIn 1s ease-out 0.9s backwards;
+        }
+
+        .primary-btn {
             width: 100%;
             padding: 15px;
-            margin: 10px 0;
+            background: linear-gradient(135deg, var(--color-primary), #b8932f);
+            color: var(--color-dark);
             border: none;
             border-radius: 6px;
-            font-size: 0.9em;
+            font-size: 1em;
             font-weight: bold;
+            letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, var(--color-primary), #b8932f);
-            color: var(--color-dark);
+            margin-bottom: 10px;
             box-shadow: 0 4px 15px rgba(196, 167, 71, 0.3);
         }
-        .btn-primary:hover {
+
+        .primary-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(196, 167, 71, 0.5);
         }
-        .btn-secondary {
+
+        .primary-btn:active {
+            transform: translateY(0);
+        }
+
+        .secondary-btn {
+            width: 100%;
+            padding: 12px;
             background: transparent;
             color: var(--color-primary);
             border: 2px solid var(--color-primary);
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            margin-bottom: 10px;
         }
-        .btn-secondary:hover {
+
+        .secondary-btn:hover {
             background: rgba(196, 167, 71, 0.1);
             transform: translateY(-2px);
         }
-        .footer {
+
+        .footer-text {
+            text-align: center;
             font-size: 0.85em;
             color: rgba(196, 167, 71, 0.7);
             margin-top: 25px;
             padding-top: 20px;
             border-top: 1px solid rgba(196, 167, 71, 0.2);
         }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--color-dark);
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            border: 2px solid var(--color-primary);
+            position: relative;
+            animation: slideIn 0.3s ease;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--color-primary);
+            font-size: 28px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .close-btn:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal h2 {
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .modal p {
+            color: var(--color-light);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--color-primary);
+            font-size: 0.9em;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            background: rgba(196, 167, 71, 0.08);
+            border: 1px solid rgba(196, 167, 71, 0.3);
+            border-radius: 4px;
+            color: var(--color-light);
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(196, 167, 71, 0.9);
+            color: var(--color-dark);
+            padding: 15px 20px;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            animation: slideIn 0.3s ease;
+            z-index: 2000;
+        }
+
+        .toast.hide {
+            animation: slideOut 0.3s ease forwards;
+        }
+
+        @keyframes slideOut {
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .product-item {
+            padding: 10px;
+            background: rgba(196, 167, 71, 0.08);
+            border: 1px solid rgba(196, 167, 71, 0.2);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 0.85em;
+        }
+
+        .product-item:hover {
+            background: rgba(196, 167, 71, 0.15);
+            border-color: var(--color-primary);
+            transform: scale(1.05);
+        }
+
+        .product-item:hover .product-image {
+            filter: brightness(1.1);
+        }
+
+        .testimonial-item {
+            padding: 15px;
+            background: rgba(196, 167, 71, 0.08);
+            border-left: 3px solid var(--color-primary);
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .gallery-item {
+            padding: 15px;
+            background: rgba(196, 167, 71, 0.08);
+            border: 1px solid rgba(196, 167, 71, 0.2);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 0.9em;
+            color: var(--color-light);
+        }
+
+        .gallery-item:hover {
+            background: rgba(196, 167, 71, 0.15);
+            border-color: var(--color-primary);
+            transform: scale(1.05);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(196, 167, 71, 0.2);
+        }
+
+        .product-details {
+            font-size: 0.9em;
+            color: var(--color-light);
+            line-height: 1.5;
+        }
+
+        .share-section {
+            background: rgba(196, 167, 71, 0.08);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(196, 167, 71, 0.2);
+        }
+
+        .share-section h3 {
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .share-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .share-btn {
+            padding: 10px;
+            background: rgba(196, 167, 71, 0.15);
+            color: var(--color-light);
+            border: 1px solid var(--color-primary);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .share-btn:hover {
+            background: rgba(196, 167, 71, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .link-container {
+            background: rgba(196, 167, 71, 0.1);
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px dashed var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        .link-text {
+            color: var(--color-primary);
+            font-size: 0.85em;
+            word-break: break-all;
+            font-family: monospace;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+        }
+
+        .copy-btn {
+            width: 100%;
+            padding: 8px;
+            background: var(--color-primary);
+            color: var(--color-dark);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85em;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(196, 167, 71, 0.4);
+        }
+
         @media (max-width: 768px) {
-            h1 {
+            .poster {
+                padding: 30px 20px;
+            }
+
+            .brand-name {
                 font-size: 2.5em;
             }
+
+            .tagline {
+                font-size: 1.1em;
+            }
+
             .features {
+                grid-template-columns: 1fr;
+            }
+
+            .share-buttons {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Big Bell Incense</h1>
-        <div class="subtitle">Premium Incense</div>
-        <div class="divider"></div>
-        <div class="tagline">Experience Divine Fragrances from Bangalore</div>
-
-        <div class="emoji">🌫️ ✨</div>
-
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">🤲</div>
-                <div class="feature-text">Premium Hand Rolled</div>
+    <div class="poster-container">
+        <div class="poster">
+            <!-- Header -->
+            <div class="header">
+                <div class="brand-name">Big Bell Incense</div>
+                <div class="subtitle">Premium Incense</div>
+                <div class="divider"></div>
+                <div class="tagline">Experience Divine Fragrances from Bangalore</div>
             </div>
-            <div class="feature">
-                <div class="feature-icon">🎁</div>
-                <div class="feature-text">Premium Box</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🤲</div>
-                <div class="feature-text">100gms Pack</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">✨</div>
-                <div class="feature-text">50gms Pack</div>
-            </div>
-        </div>
 
-        <button class="btn btn-primary" onclick="alert('Explore Products - Coming Soon!')">Explore Our Products</button>
-        <button class="btn btn-secondary" onclick="alert('Contact Us via WhatsApp, Instagram, or Email')">Contact Us</button>
-        <button class="btn btn-secondary" onclick="alert('⭐⭐⭐⭐⭐ Customer Reviews')">Customer Reviews</button>
-        <button class="btn btn-secondary" onclick="alert('📸 Photo Gallery - Coming Soon!')">Photo Gallery</button>
+            <!-- Visual Element -->
+            <div class="incense-visual">🌫️ ✨</div>
 
-        <div class="footer">
-            Pure, Natural, Hand Rolled Incense
+            <!-- Features -->
+            <div class="features">
+                <div class="feature" onclick="openModal('pureModal')">
+                    <div class="feature-icon">🤲</div>
+                    <div class="feature-text">Premium Hand Rolled</div>
+                </div>
+                <div class="feature" onclick="openModal('naturalModal')">
+                    <div class="feature-icon">🎁</div>
+                    <div class="feature-text">Premium Box</div>
+                </div>
+                <div class="feature" onclick="openModal('handrolledModal')">
+                    <div class="feature-icon">🤲</div>
+                    <div class="feature-text">100gms Pack</div>
+                </div>
+                <div class="feature" onclick="openModal('craftsmanshipModal')">
+                    <div class="feature-icon">✨</div>
+                    <div class="feature-text">50gms Pack</div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <button class="primary-btn" onclick="openModal('productsModal')">Explore Our Products</button>
+                <button class="secondary-btn" onclick="openModal('shareModal')">Share With Customers</button>
+                <button class="secondary-btn" onclick="openModal('contactModal')">Contact Us</button>
+                <button class="secondary-btn" onclick="openModal('testimonialsModal')">Customer Reviews</button>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer-text">
+                Pure, Natural, Hand Rolled Incense
+            </div>
+
+            <!-- Download Button -->
+            <div style="margin-top: 20px;">
+                <button class="primary-btn" onclick="downloadHTML()">📥 Download as HTML File</button>
+                <p style="font-size: 0.75em; color: rgba(196, 167, 71, 0.6); margin-top: 8px; text-align: center;">Save this page to your computer</p>
+            </div>
         </div>
     </div>
+
+        function downloadHTML() {
+            const htmlContent = document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'index.html';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            showToast('✓ index.html downloaded! Check your Downloads folder.');
+        }
+
+    <!-- Share Modal -->
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('shareModal')">&times;</button>
+            <h2>Share With Customers</h2>
+            <div class="share-section">
+                <h3>Your Direct Link</h3>
+                <p style="color: rgba(196, 167, 71, 0.8); font-size: 0.9em; margin-bottom: 10px;">Share this link with your customers:</p>
+                <div class="link-container">
+                    <div class="link-text" id="shareLink">https://big-bell-incense.netlify.app</div>
+                    <button class="copy-btn" onclick="copyToClipboard()">Copy Link</button>
+                </div>
+            </div>
+
+            <div class="share-section">
+                <h3>Share on Social Media</h3>
+                <div class="share-buttons">
+                    <button class="share-btn" onclick="shareWhatsApp()">📱 WhatsApp</button>
+                    <button class="share-btn" onclick="shareInstagram()">📸 Instagram</button>
+                    <button class="share-btn" onclick="shareLinkedIn()">💼 LinkedIn</button>
+                    <button class="share-btn" onclick="shareEmail()">📧 Email</button>
+                </div>
+            </div>
+
+            <div class="share-section">
+                <h3>QR Code</h3>
+                <p style="color: var(--color-light); font-size: 0.9em; margin-bottom: 10px;">Generate a QR code for easy sharing:</p>
+                <button class="primary-btn" onclick="generateQR()">Generate QR Code</button>
+            </div>
+
+            <div style="margin-top: 15px; padding: 15px; background: rgba(196, 167, 71, 0.08); border-radius: 6px; border-left: 3px solid var(--color-primary);">
+                <p style="color: var(--color-light); font-size: 0.85em; line-height: 1.6;">
+                    <strong style="color: var(--color-primary);">Deployment Tips:</strong><br>
+                    1. Save this page as index.html<br>
+                    2. Visit netlify.com/drop<br>
+                    3. Drag & drop your file<br>
+                    4. Get instant live link!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div id="productsModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('productsModal')">&times;</button>
+            <h2>Our Collection</h2>
+            <p>Discover our premium range of hand-rolled incense crafted with the finest natural ingredients:</p>
+            <div class="product-grid">
+                <div class="product-item" onclick="selectProduct('Premium Masala')">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1765443944/search_images/301eddbd99bcbc2a88f57c83d2b0bef129d02c5e.jpg" alt="Premium Masala" class="product-image">
+                    <div class="product-details">Premium Masala</div>
+                </div>
+                <div class="product-item" onclick="selectProduct('Floral Divine')">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1765443943/search_images/590c0c81fb16cca0848637b501470527355f8fa1.jpg" alt="Floral Divine" class="product-image">
+                    <div class="product-details">Floral Divine</div>
+                </div>
+                <div class="product-item" onclick="selectProduct('Sandalwood Gold')">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1765443943/search_images/80cf66c7876661b1a5713f4b22a79d38d535b461.jpg" alt="Sandalwood Gold" class="product-image">
+                    <div class="product-details">Sandalwood Gold</div>
+                </div>
+                <div class="product-item" onclick="selectProduct('Temple Fresh')">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1765443944/search_images/6e9077a11e950f1efcbb0aa8498f0d5cc8215427.jpg" alt="Temple Fresh" class="product-image">
+                    <div class="product-details">Temple Fresh</div>
+                </div>
+                <div class="product-item" onclick="selectProduct('Aroma Bliss')">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1765443943/search_images/ce80579dbf29f54944d6e492c9e9e1311508ffa3.jpg" alt="Aroma Bliss" class="product-image">
+                    <div class="product-details">Aroma Bliss</div>
+                </div>
+                <div class="product-item" onclick="selectProduct('Heritage Spice')">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1765443943/search_images/369f1ba3560d948cef53476ee5b0a9f28a62a888.jpg" alt="Heritage Spice" class="product-image">
+                    <div class="product-details">Heritage Spice</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pure Modal -->
+    <div id="pureModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('pureModal')">&times;</button>
+            <h2>Premium Hand Rolled Incense</h2>
+            <p>We use only the finest natural ingredients without any synthetic additives or harmful chemicals. Every stick is crafted to deliver authentic, unadulterated fragrance.</p>
+            <div class="product-grid" style="margin: 20px 0;">
+                <div class="product-item">
+                    <input type="file" id="pureImage1" accept="image/*" style="display:none;" onchange="uploadPureImage(1, this)">
+                    <div onclick="document.getElementById('pureImage1').click();" style="cursor: pointer; text-align: center;">
+                        <div id="pureImagePreview1" style="width: 100%; height: 120px; background: rgba(196, 167, 71, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border: 2px dashed var(--color-primary);">
+                            <span style="color: var(--color-primary);">Click to Add Image</span>
+                        </div>
+                        <p style="font-size: 0.8em; color: var(--color-light);">Pure Collection 1</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <input type="file" id="pureImage2" accept="image/*" style="display:none;" onchange="uploadPureImage(2, this)">
+                    <div onclick="document.getElementById('pureImage2').click();" style="cursor: pointer; text-align: center;">
+                        <div id="pureImagePreview2" style="width: 100%; height: 120px; background: rgba(196, 167, 71, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border: 2px dashed var(--color-primary);">
+                            <span style="color: var(--color-primary);">Click to Add Image</span>
+                        </div>
+                        <p style="font-size: 0.8em; color: var(--color-light);">Pure Collection 2</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <input type="file" id="pureImage3" accept="image/*" style="display:none;" onchange="uploadPureImage(3, this)">
+                    <div onclick="document.getElementById('pureImage3').click();" style="cursor: pointer; text-align: center;">
+                        <div id="pureImagePreview3" style="width: 100%; height: 120px; background: rgba(196, 167, 71, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border: 2px dashed var(--color-primary);">
+                            <span style="color: var(--color-primary);">Click to Add Image</span>
+                        </div>
+                        <p style="font-size: 0.8em; color: var(--color-light);">Pure Collection 3</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <input type="file" id="pureImage4" accept="image/*" style="display:none;" onchange="uploadPureImage(4, this)">
+                    <div onclick="document.getElementById('pureImage4').click();" style="cursor: pointer; text-align: center;">
+                        <div id="pureImagePreview4" style="width: 100%; height: 120px; background: rgba(196, 167, 71, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border: 2px dashed var(--color-primary);">
+                            <span style="color: var(--color-primary);">Click to Add Image</span>
+                        </div>
+                        <p style="font-size: 0.8em; color: var(--color-light);">Pure Collection 4</p>
+                    </div>
+                </div>
+            </div>
+            <button class="primary-btn" onclick="openModal('contactModal')">Learn More</button>
+        </div>
+    </div>
+
+    <!-- Natural Modal -->
+    <div id="naturalModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('naturalModal')">&times;</button>
+            <h2>Premium Box</h2>
+            <p>Our incense comes beautifully packaged in premium boxes designed for gifting and storage. Each box is crafted to preserve the fragrance and presentation of your incense collection.</p>
+            <div class="product-grid" style="margin: 20px 0;">
+                <div class="product-item">
+                    <input type="file" id="boxImage1" accept="image/*" style="display:none;" onchange="uploadBoxImage(1, this)">
+                    <div onclick="document.getElementById('boxImage1').click();" style="cursor: pointer; text-align: center;">
+                        <div id="boxImagePreview1" style="width: 100%; height: 120px; background: rgba(196, 167, 71, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border: 2px dashed var(--color-primary);">
+                            <span style="color: var(--color-primary);">Click to Add</span>
+                        </div>
+                        <p style="font-size: 0.8em; color: var(--color-light);">Premium Box 1</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <input type="file" id="boxImage2" accept="image/*" style="display:none;" onchange="uploadBoxImage(2, this)">
+                    <div onclick="document.getElementById('boxImage2').click();" style="cursor: pointer; text-align: center;">
+                        <div id="boxImagePreview2" style="width: 100%; height: 120px; background: rgba(196, 167, 71, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border: 2px dashed var(--color-primary);">
+                            <span style="color: var(--color-primary);">Click to Add</span>
+                        </div>
+                        <p style="font-size: 0.8em; color: var(--color-light);">Premium Box 2</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <input type="file" id="boxImage3" accept="image/*" style="display:none;" onchange="uploadBoxImage(3, this)">
+                    <div onclick="document.getElementById('boxImage3').click();" style="cursor: pointer; text-align: center;">
+                        <div id="boxImagePreview3" style="width: 100%; height: 120px; background: rgba(196, 167, 71, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border: 2px dashed var(--color-primary);">
+                            <span style="color: var(--color-primary);">Click to Add</span>
+                        </div>
+                        <p style="font-size: 0.8em; color: var(--color-light);">Premium Box 3</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <input type="file" id="boxImage4" accept="image/*" style="display:none;" onchange="uploadBoxImage(4, this)">
+                    <div onclick="document.getElementById('boxImage4').click();" style="cursor: pointer; text-align: center;">
+                        <div id="boxImagePreview4" style="width: 100%; height: 120px; background: rgba(196, 167, 71, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border: 2px dashed var(--color-primary);">
+                            <span style="color: var(--color-primary);">Click to Add</span>
+                        </div>
+                        <p style="font-size: 0.8em; color: var(--color-light);">Premium Box 4</p>
+                    </div>
+                </div>
+            </div>
+            <button class="primary-btn" onclick="openModal('contactModal')">Learn More</button>
+        </div>
+    </div>
+
+    <!-- Hand Rolled Modal -->
+    <div id="handrolledModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('handrolledModal')">&times;</button>
+            <h2>100gms Pack</h2>
+            <p>Premium 100gms package - perfect for regular use. Each pack contains our finest hand-rolled incense sticks for extended fragrance enjoyment.</p>
+            <div class="product-grid" style="margin: 20px 0;">
+                <div class="product-item">
+                    <input type="file" id="packImage1" accept="image/*" style="display:none;" onchange="uploadPackImage(1, this)">
+                    <div onclick="document.getElementById('packImage1').click();" style="cursor: pointer; text-align: center;">
+                        <div id="packImagePreview1" style="width: 100%; height: 120px; background: rgba(196, 167, 71, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border: 2px dashed var(--color-primary);">
+                            <span style="color: var(--color-primary);">Click to Add</span>
+                        </div>
+                        <p style="font-size: 0.8em; color: var(--color-light);">100gms Image 1</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <input type="file" id="packImage2" accept="image/*" style="display:none;" onchange="uploadPackImage(2, this)">
+                    <div onclick="document.getElementById('packImage2').click();" style="cursor: pointer; text-align: center;">
+                        <div id="packImagePreview2" style="width: 100%; height: 120px; background: rgba(196, 167, 71, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border: 2px dashed var(--color-primary);">
+                            <span style="color: var(--color-primary);">Click to Add</span>
+                        </div>
+                        <p style="font-size: 0.8em; color: var(--color-light);">100gms Image 2</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <input type="file" id="packImage3" accept="image/*" style="display:none;" onchange="uploadPackImage(3, this)">
+                    <div onclick="document.getElementById('packImage3').click();" style="cursor: pointer; text-align: center;">
+                        <div id="packImagePreview3" style="width: 100%; height: 120px; background: rgba(196, 167, 71, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border: 2px dashed var(--color-primary);">
+                            <span style="color: var(--color-primary);">Click to Add</span>
+                        </div>
+                        <p style="font-size: 0.8em; color: var(--color-light);">100gms Image 3</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <input type="file" id="packImage4" accept="image/*" style="display:none;" onchange="uploadPackImage(4, this)">
+                    <div onclick="document.getElementById('packImage4').click();" style="cursor: pointer; text-align: center;">
+                        <div id="packImagePreview4" style="width: 100%; height: 120px; background: rgba(196, 167, 71, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border: 2px dashed var(--color-primary);">
+                            <span style="color: var(--color-primary);">Click to Add</span>
+                        </div>
+                        <p style="font-size: 0.8em; color: var(--color-light);">100gms Image 4</p>
+                    </div>
+                </div>
+            </div>
+            <button class="primary-btn" onclick="openModal('contactModal')">Learn More</button>
+        </div>
+    </div>
+
+    <!-- Craftsmanship Modal -->
+    <div id="craftsmanshipModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('craftsmanshipModal')">&times;</button>
+            <h2>50gms Pack</h2>
+            <p>Premium 50gms sample pack - ideal for trying our premium varieties. Experience our finest fragrances in convenient smaller quantities.</p>
+            <div class="product-grid" style="margin: 20px 0;">
+                <div class="product-item">
+                    <input type="file" id="sampleImage1" accept="image/*" style="display:none;" onchange="uploadSampleImage(1, this)">
+                    <div onclick="document.getElementById('sampleImage1').click();" style="cursor: pointer; text-align: center;">
+                        <div id="sampleImagePreview1" style="width: 100%; height: 120px; background: rgba(196, 167, 71, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border: 2px dashed var(--color-primary);">
+                            <span style="color: var(--color-primary);">Click to Add</span>
+                        </div>
+                        <p style="font-size: 0.8em; color: var(--color-light);">50gms Image 1</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <input type="file" id="sampleImage2" accept="image/*" style="display:none;" onchange="uploadSampleImage(2, this)">
+                    <div onclick="document.getElementById('sampleImage2').click();" style="cursor: pointer; text-align: center;">
+                        <div id="sampleImagePreview2" style="width: 100%; height: 120px; background: rgba(196, 167, 71, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border: 2px dashed var(--color-primary);">
+                            <span style="color: var(--color-primary);">Click to Add</span>
+                        </div>
+                        <p style="font-size: 0.8em; color: var(--color-light);">50gms Image 2</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <input type="file" id="sampleImage3" accept="image/*" style="display:none;" onchange="uploadSampleImage(3, this)">
+                    <div onclick="document.getElementById('sampleImage3').click();" style="cursor: pointer; text-align: center;">
+                        <div id="sampleImagePreview3" style="width: 100%; height: 120px; background: rgba(196, 167, 71, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border: 2px dashed var(--color-primary);">
+                            <span style="color: var(--color-primary);">Click to Add</span>
+                        </div>
+                        <p style="font-size: 0.8em; color: var(--color-light);">50gms Image 3</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <input type="file" id="sampleImage4" accept="image/*" style="display:none;" onchange="uploadSampleImage(4, this)">
+                    <div onclick="document.getElementById('sampleImage4').click();" style="cursor: pointer; text-align: center;">
+                        <div id="sampleImagePreview4" style="width: 100%; height: 120px; background: rgba(196, 167, 71, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border: 2px dashed var(--color-primary);">
+                            <span style="color: var(--color-primary);">Click to Add</span>
+                        </div>
+                        <p style="font-size: 0.8em; color: var(--color-light);">50gms Image 4</p>
+                    </div>
+                </div>
+            </div>
+            <button class="primary-btn" onclick="openModal('contactModal')">Learn More</button>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('contactModal')">&times;</button>
+            <h2>Get In Touch</h2>
+            <form onsubmit="submitContact(event)">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="contactName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="contactEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea id="contactMessage" required></textarea>
+                </div>
+                <button type="submit" class="primary-btn">Send Message</button>
+            </form>
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(196, 167, 71, 0.2);">
+                <p style="font-size: 0.9em; margin-bottom: 10px;">Or connect with us directly:</p>
+                <div style="display: flex; gap: 10px; justify-content: center;">
+                    <button class="secondary-btn" style="flex: 1; margin: 0;" onclick="contactVia('WhatsApp')">WhatsApp</button>
+                    <button class="secondary-btn" style="flex: 1; margin: 0;" onclick="contactVia('Instagram')">Instagram</button>
+                    <button class="secondary-btn" style="flex: 1; margin: 0;" onclick="contactVia('LinkedIn')">LinkedIn</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Testimonials Modal -->
+    <div id="testimonialsModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('testimonialsModal')">&times;</button>
+            <h2>Customer Reviews</h2>
+            <div class="testimonial-item">
+                <p style="font-style: italic; margin-bottom: 10px;">"The finest incense I've ever experienced. The fragrance is absolutely divine and lasts for hours. Highly recommend!"</p>
+                <p style="color: var(--color-primary); font-weight: bold;">⭐⭐⭐⭐⭐ Priya M.</p>
+            </div>
+            <div class="testimonial-item">
+                <p style="font-style: italic; margin-bottom: 10px;">"Pure excellence in every stick. I've been ordering from Big Bell for 2 years now and the quality is consistently outstanding."</p>
+                <p style="color: var(--color-primary); font-weight: bold;">⭐⭐⭐⭐⭐ Rajesh K.</p>
+            </div>
+            <div class="testimonial-item">
+                <p style="font-style: italic; margin-bottom: 10px;">"Perfect for my spiritual practice. The natural ingredients make all the difference. Worth every rupee!"</p>
+                <p style="color: var(--color-primary); font-weight: bold;">⭐⭐⭐⭐⭐ Anjali S.</p>
+            </div>
+            <button class="primary-btn" onclick="openModal('contactModal')">Share Your Review</button>
+        </div>
+    </div>
+
+    <!-- Photo Gallery Modal -->
+    <div id="galleryModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('galleryModal')">&times;</button>
+            <h2>Photo Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="viewGalleryImage(0)">📸 Handcrafted Collection</div>
+                <div class="gallery-item" onclick="viewGalleryImage(1)">🌿 Natural Ingredients</div>
+                <div class="gallery-item" onclick="viewGalleryImage(2)">🏺 Premium Packaging</div>
+                <div class="gallery-item" onclick="viewGalleryImage(3)">✨ Artisan at Work</div>
+                <div class="gallery-item" onclick="viewGalleryImage(4)">🎨 Product Range</div>
+                <div class="gallery-item" onclick="viewGalleryImage(5)">🌟 Temple Use</div>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.85em; color: rgba(196, 167, 71, 0.7);">Click any image to view details</p>
+        </div>
+    </div>
+
+    <!-- Newsletter Modal -->
+    <div id="newsletterModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('newsletterModal')">&times;</button>
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Get exclusive updates on new products, special offers, and fragrance tips delivered to your inbox.</p>
+            <form onsubmit="submitNewsletter(event)">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="newsletterEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" id="newsletterName" required>
+                </div>
+                <button type="submit" class="primary-btn">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function selectProduct(productName) {
+            showToast(`${productName} added to interest list!`);
+        }
+
+        function submitContact(event) {
+            event.preventDefault();
+            const name = document.getElementById('contactName').value;
+            showToast(`Thank you, ${name}! We'll be in touch soon.`);
+            closeModal('contactModal');
+            document.querySelector('#contactModal form').reset();
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.add('hide');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function contactVia(platform) {
+            const messages = {
+                'WhatsApp': 'Opening WhatsApp for business inquiries...',
+                'Instagram': 'Visit us on Instagram @BigBellIncense',
+                'LinkedIn': 'Connect with us on LinkedIn'
+            };
+            showToast(messages[platform]);
+            closeModal('contactModal');
+        }
+
+        function submitNewsletter(event) {
+            event.preventDefault();
+            const email = document.getElementById('newsletterEmail').value;
+            showToast(`Welcome! Newsletter confirmation sent to ${email}`);
+            closeModal('newsletterModal');
+            document.querySelector('#newsletterModal form').reset();
+        }
+
+        function copyToClipboard() {
+            const link = document.getElementById('shareLink').textContent;
+            
+            // Fallback method for better browser support
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(link).then(() => {
+                    showToast('✓ Link copied to clipboard!');
+                }).catch(() => {
+                    fallbackCopy(link);
+                });
+            } else {
+                fallbackCopy(link);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast('✓ Link copied to clipboard!');
+            } catch (err) {
+                showToast('Copy failed - Please select and copy manually');
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function shareWhatsApp() {
+            const text = 'Check out Big Bell Incense premium collection! 🌫️✨ https://big-bell-incense.netlify.app';
+            const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        }
+
+        function shareInstagram() {
+            showToast('Instagram: Visit our profile @BigBellIncense');
+            showToast('Share the link: https://big-bell-incense.netlify.app');
+        }
+
+        function shareLinkedIn() {
+            const text = 'Big Bell Incense - Premium Hand Rolled Incense from Bangalore';
+            const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://big-bell-incense.netlify.app')}`;
+            window.open(url, '_blank');
+        }
+
+        function shareEmail() {
+            const subject = 'Big Bell Incense - Premium Collection';
+            const body = 'Check out our premium incense collection: https://big-bell-incense.netlify.app';
+            window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        function generateQR() {
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent('https://big-bell-incense.netlify.app')}`;
+            const qrWindow = window.open();
+            qrWindow.document.write(`
+                <html>
+                <head><title>Big Bell Incense QR Code</title></head>
+                <body style="display: flex; justify-content: center; align-items: center; height: 100vh; background: #f5f0e8; margin: 0;">
+                    <div style="text-align: center;">
+                        <h2 style="color: #c4a747; margin-bottom: 20px;">Scan to Visit</h2>
+                        <img src="${qrUrl}" alt="QR Code">
+                        <p style="color: #2a1810; margin-top: 20px;">Right-click to save QR code</p>
+                    </div>
+                </body>
+                </html>
+            `);
+        }
+
+        function uploadPureImage(slot, fileInput) {
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('pureImagePreview' + slot);
+                    preview.innerHTML = `<img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">`;
+                    showToast(`Pure Collection ${slot} image uploaded!`);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function uploadPackImage(slot, fileInput) {
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('packImagePreview' + slot);
+                    preview.innerHTML = `<img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">`;
+                    showToast(`100gms Pack Image ${slot} uploaded!`);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function uploadSampleImage(slot, fileInput) {
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('sampleImagePreview' + slot);
+                    preview.innerHTML = `<img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">`;
+                    showToast(`50gms Pack Image ${slot} uploaded!`);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function uploadBoxImage(slot, fileInput) {
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('boxImagePreview' + slot);
+                    preview.innerHTML = `<img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">`;
+                    showToast(`Premium Box Image ${slot} uploaded!`);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function viewGalleryImage(index) {
+            const images = [
+                'Handcrafted Collection - Our skilled artisans carefully craft each stick',
+                'Natural Ingredients - Sourced from premium suppliers in India & Indonesia',
+                'Premium Packaging - Beautifully designed packaging perfect for gifting',
+                'Artisan at Work - Traditional hand-rolling technique in action',
+                'Product Range - Full collection of premium incense varieties',
+                'Temple Use - Trusted by temples and spiritual practitioners'
+            ];
+            showToast(images[index]);
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
